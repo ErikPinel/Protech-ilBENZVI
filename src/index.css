@@ -1,0 +1,499 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  direction: rtl;
+}
+
+body {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+@layer components {
+  /* Navbar Styles */
+  .logo-link {
+    @apply flex items-center transition-transform duration-300 hover:scale-105;
+  }
+
+  .logo-container {
+    @apply flex items-center gap-3;
+  }
+
+  .logo-gradient-new {
+    @apply w-10 h-10 rounded-lg bg-gradient-to-br from-cyan-400 via-blue-500 to-purple-600 flex items-center justify-center shadow-lg transition-all duration-300;
+  }
+
+  .logo-link:hover .logo-gradient-new {
+    @apply shadow-cyan-500/50 scale-110;
+  }
+
+  .nav-group-new {
+    @apply flex items-center gap-1;
+  }
+
+  .nav-link-new {
+    @apply flex items-center gap-2 px-4 py-2 text-gray-300 font-medium rounded-lg transition-all duration-300 hover:text-white relative overflow-hidden;
+  }
+
+  .nav-link-new::before {
+    content: '';
+    @apply absolute inset-0 bg-gradient-to-r from-cyan-500/20 via-blue-500/20 to-purple-500/20 opacity-0 transition-opacity duration-300;
+  }
+
+  .nav-link-new:hover::before {
+    @apply opacity-100;
+  }
+
+  .nav-link-new::after {
+    content: '';
+    @apply absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600 transition-all duration-300;
+  }
+
+  .nav-link-new:hover::after {
+    @apply w-full;
+  }
+
+  /* Mobile Menu */
+  .menu-button-new {
+    @apply w-10 h-10 flex items-center justify-center rounded-lg transition-colors;
+  }
+
+  .menu-icon-new {
+    @apply w-6 flex flex-col gap-1.5;
+  }
+
+  .menu-icon-new span {
+    @apply block h-0.5 rounded-full bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600 transition-all duration-300;
+  }
+
+  .menu-icon-new span:nth-child(1) {
+    @apply w-full transform origin-top-right;
+  }
+
+  .menu-icon-new span:nth-child(2) {
+    @apply w-3/4 transform origin-center;
+  }
+
+  .menu-icon-new span:nth-child(3) {
+    @apply w-1/2 transform origin-bottom-right;
+  }
+
+  .menu-icon-new.is-active span:nth-child(1) {
+    @apply w-full rotate-45;
+  }
+
+  .menu-icon-new.is-active span:nth-child(2) {
+    @apply w-0 opacity-0;
+  }
+
+  .menu-icon-new.is-active span:nth-child(3) {
+    @apply w-full -rotate-45;
+  }
+
+  /* Mobile Menu - Updated */
+  .mobile-menu {
+    @apply fixed top-16 right-0 w-full md:hidden overflow-hidden transition-all duration-300 ease-in-out bg-slate-800/95 backdrop-blur-md transform -translate-y-full;
+    height: 0;
+  }
+
+  .mobile-menu.is-active {
+    @apply transform translate-y-0;
+    height: auto;
+  }
+
+  .mobile-menu-link {
+    @apply flex flex-col items-center gap-2 py-4 px-6 text-gray-300 hover:text-white hover:bg-slate-700/50 transition-all duration-300 border-b border-slate-700/50;
+  }
+
+  .mobile-menu-icon {
+    @apply w-12 h-12 rounded-xl bg-slate-700/50 flex items-center justify-center transition-all duration-300;
+  }
+
+  .mobile-menu-link:hover .mobile-menu-icon {
+    @apply bg-blue-500/20 transform scale-110;
+  }
+
+  .mobile-menu-link:last-child {
+    @apply border-b-0;
+  }
+
+  /* Hero Section */
+  .hero-gradient {
+    background: linear-gradient(135deg, #1e40af 0%, #3b82f6 50%, #60a5fa 100%);
+  }
+
+  .hero-button {
+    @apply relative overflow-hidden bg-gradient-to-r from-yellow-400 to-yellow-500 text-blue-900 px-8 py-4 rounded-full text-lg font-bold shadow-lg transition-all duration-500 hover:shadow-xl hover:scale-105;
+  }
+
+  .hero-button::before {
+    content: '';
+    @apply absolute top-0 left-0 w-full h-full bg-white/20 transform -translate-x-full skew-x-12 transition-transform duration-700;
+  }
+
+  .hero-button:hover::before {
+    @apply translate-x-full;
+  }
+
+  .whatsapp-button-hero {
+    @apply relative overflow-hidden bg-gradient-to-r from-green-500 to-green-600 text-white px-8 py-4 rounded-full text-lg font-bold shadow-lg transition-all duration-500 hover:shadow-xl hover:scale-105 flex items-center justify-center gap-2;
+  }
+
+  .whatsapp-button-hero::before {
+    content: '';
+    @apply absolute top-0 left-0 w-full h-full bg-white/20 transform -translate-x-full skew-x-12 transition-transform duration-700;
+  }
+
+  .whatsapp-button-hero:hover::before {
+    @apply translate-x-full;
+  }
+
+  /* Card Animations */
+  .card-fill-animation {
+    @apply relative overflow-hidden bg-white border-2 transition-all duration-500 shadow-lg;
+    border-color: #e5e7eb;
+    transform: translateZ(0);
+    will-change: transform, box-shadow, background-color;
+  }
+
+  .card-blue {
+    --card-color: rgb(37, 99, 235);
+    --card-bg: rgb(239, 246, 255);
+  }
+
+  .card-yellow {
+    --card-color: rgb(202, 138, 4);
+    --card-bg: rgb(254, 249, 195);
+  }
+
+  .card-green {
+    --card-color: rgb(22, 163, 74);
+    --card-bg: rgb(240, 253, 244);
+  }
+
+  .card-fill-animation::before {
+    content: '';
+    @apply absolute inset-0 opacity-0 transition-all duration-500;
+    background: var(--card-primary);
+  }
+
+  .card-fill-animation:hover {
+    @apply shadow-2xl border-transparent;
+    transform: translateY(-4px) translateZ(0);
+    background-color: var(--card-bg);
+  }
+
+  .card-fill-animation:hover::before {
+    @apply opacity-10;
+  }
+
+  .card-fill-animation:active {
+    @apply shadow-xl;
+    transform: translateY(-2px) translateZ(0);
+    background-color: var(--card-bg);
+  }
+
+  .card-fill-animation .icon-container {
+    @apply relative z-10 transition-all duration-300 shadow-xl;
+    background: var(--card-primary);
+    animation: iconFloat 3s ease-in-out infinite;
+  }
+
+  .card-fill-animation:hover .icon-container {
+    animation: iconHoverNew 1s ease-in-out infinite;
+    box-shadow: 0 8px 32px -8px var(--card-primary);
+  }
+
+  .card-fill-animation:active .icon-container {
+    transform: scale(0.95);
+  }
+
+  .card-fill-animation .card-content {
+    @apply relative z-10;
+  }
+
+  .card-fill-animation .card-title {
+    @apply transition-all duration-300;
+    color: var(--card-primary);
+  }
+
+  .card-fill-animation:hover .card-title {
+    @apply transform -translate-y-1;
+  }
+
+  .card-fill-animation .card-description {
+    @apply transition-all duration-300;
+  }
+
+  .card-fill-animation:hover .card-description {
+    color: var(--card-primary);
+  }
+
+  /* Benefits Section */
+  .benefit-card {
+    @apply relative overflow-hidden transition-all duration-500;
+  }
+
+  .benefit-card::before {
+    content: '';
+    @apply absolute inset-0 bg-gradient-to-r from-white/0 via-white/20 to-white/0 transform -translate-x-full;
+    transition: transform 0.8s ease;
+  }
+
+  .benefit-card:hover::before {
+    @apply translate-x-full;
+  }
+
+  .benefit-icon-container {
+    @apply w-16 h-16 flex items-center justify-center rounded-xl bg-blue-800/50 transition-all duration-300;
+  }
+
+  .benefit-card:hover .benefit-icon-container {
+    @apply transform scale-110 bg-blue-700/50;
+  }
+
+  /* Form Styles */
+  .form-input {
+    @apply transition-all duration-300 shadow-sm;
+  }
+
+  .form-input:focus {
+    @apply transform scale-[1.02] shadow-md;
+  }
+  .form-input:focus {
+    @apply border-green-500 ring-green-200;
+  }
+  .form-input::placeholder {
+    @apply text-gray-500 font-medium;
+  }
+  
+
+  .form-input:hover:not(:focus) {
+    @apply border-gray-300 shadow-md;
+  }
+
+  select.form-input {
+    @apply appearance-none bg-no-repeat;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%236B7280'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'%3E%3C/path%3E%3C/svg%3E");
+    background-position: left 1rem center;
+    background-size: 1.5em 1.5em;
+    padding-left: 2.5rem;
+  }
+
+  .text-red-500 {
+    animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+
+  /* Float Animation */
+  .animate-float {
+    animation: float 3s ease-in-out infinite;
+  }
+
+  /* Pulse Animation */
+  .animate-pulse-slow {
+    animation: pulse-slow 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+
+  /* WhatsApp Button */
+  .whatsapp-button {
+    @apply fixed bottom-6 left-6 bg-gradient-to-r from-green-500 to-green-600 text-white p-4 rounded-full shadow-xl transition-all duration-300 z-50;
+  }
+
+  .whatsapp-button:hover {
+    @apply from-green-400 to-green-500 transform scale-110;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  }
+
+  /* Add a subtle pulse animation for the icons */
+  @keyframes subtlePulse {
+    0%, 100% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.05);
+    }
+  }
+
+  .icon-container {
+    animation: subtlePulse 3s ease-in-out infinite;
+  }
+
+  /* Shine effect */
+  .card-fill-animation::after {
+    content: '';
+    @apply absolute inset-0 opacity-0 transition-all duration-1000;
+    background: linear-gradient(
+      45deg,
+      transparent 0%,
+      rgba(255, 255, 255, 0.6) 50%,
+      transparent 100%
+    );
+    transform: translateX(-100%) rotate(45deg);
+  }
+
+  .card-fill-animation:hover::after {
+    @apply opacity-100;
+    transform: translateX(100%) rotate(45deg);
+  }
+
+  /* New animations for benefits section */
+  @keyframes float-particle {
+    0% {
+      transform: translateY(0) translateX(0);
+      opacity: 0;
+    }
+    50% {
+      opacity: 1;
+    }
+    100% {
+      transform: translateY(-100vh) translateX(100px);
+      opacity: 0;
+    }
+  }
+
+  @keyframes fade-slide-up {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes gradient-xy {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+
+  @keyframes gradientPosition {
+    0%, 100% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+  }
+
+  @keyframes iconFloat {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-5px);
+    }
+  }
+
+  @keyframes iconHoverNew {
+    0%, 100% {
+      transform: translateY(-5px) rotate(0) scale(1.1);
+    }
+    25% {
+      transform: translateY(-5px) rotate(5deg) scale(1.15);
+    }
+    75% {
+      transform: translateY(-5px) rotate(-5deg) scale(1.15);
+    }
+  }
+
+  .animate-gradient-xy {
+    animation: gradient-xy 3s ease infinite;
+    background-size: 400% 400%;
+  }
+
+  .particle {
+    will-change: transform;
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes pulse-slow {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.8;
+    transform: scale(0.98);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+/* Mobile touch states */
+@media (max-width: 768px) {
+  .card-fill-animation:active {
+    transform: scale(0.98) translateZ(0);
+    background-color: var(--card-bg);
+  }
+  
+  .card-fill-animation:active .icon-container {
+    transform: scale(1.15) rotate(5deg);
+    box-shadow: 0 8px 32px -8px var(--card-primary);
+  }
+
+  .card-fill-animation:active::before {
+    @apply opacity-15;
+  }
+}
+
+@media (max-width: 640px) {
+  .benefit-card {
+    @apply text-center;
+  }
+  
+  .benefit-card .benefit-icon-container {
+    @apply mx-auto mb-4;
+  }
+}
+
+
+/* Fix the select dropdown appearance */
+select.form-input {
+  appearance: none; /* Removes browser's default dropdown */
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%236B7280'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'%3E%3C/path%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 1rem center; /* Align dropdown icon */
+  background-size: 1.5em 1.5em;
+  padding-right: 2.5rem; /* Spacing for dropdown icon */
+  padding-left: 1rem; /* Adjust left padding for RTL */
+}
+
+select.form-input option {
+  background-color: white; /* Ensure white background */
+  color: black; /* Black text for visibility */
+}
+
+select.form-input:focus {
+  border-color: #22c55e; /* Green focus border */
+  box-shadow: 0 0 0 4px rgba(34, 197, 94, 0.25); /* Subtle green focus ring */
+}
+
+/* Dropdown open fix for jumps */
+select.form-input:focus-visible {
+  outline: none; /* Removes browser's default outline */
+}
