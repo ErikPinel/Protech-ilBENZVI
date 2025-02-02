@@ -200,13 +200,13 @@ function HomePage() {
           <div className="max-w-4xl mx-auto text-center">
             <div className="inline-block mb-4 bg-blue-500/30 px-6 py-2 rounded-full animate-float">
               <Sparkles className="w-5 h-5 inline-block ml-2 text-yellow-300" />
-              <span className="text-yellow-300">בית הספר אורי אורבך פתח תקווה</span>
+              <span className="text-yellow-300">חטיבת בן צבי פתח תקווה</span>
             </div>
             <h1 className="text-3xl md:text-5xl font-bold mb-6 animate-pulse-slow">
               חוג תכנות חווייתי ומעשיר
             </h1>
             <h1 className="text-3xl md:text-5xl font-bold mb-6 animate-pulse-slow">
-              לילדי כיתות ה׳-ו׳
+              לילדי כיתות ו׳-ט׳
             </h1>
             <p className="text-xl md:text-2xl mb-8 text-blue-100">
               פיתוח חשיבה יצירתית ומיומנויות טכנולוגיות דרך בניית אתרים ופרויקטים מעשיים
@@ -426,11 +426,11 @@ function HomePage() {
                   <option value="" disabled>
                     בחרו כיתה
                   </option>
-                  <option value="ה">כיתה ה׳</option>
+                  {/* <option value="ה">כיתה ה׳</option> */}
                   <option value="ו">כיתה ו׳</option>
-                  {/* <option value="ז">כיתה ז׳</option>
+                  <option value="ז">כיתה ז׳</option>
                   <option value="ח">כיתה ח׳</option>
-                  <option value="ט">כיתה ט׳</option> */}
+                  <option value="ט">כיתה ט׳</option>
                 </select>
               </div>
               <button
